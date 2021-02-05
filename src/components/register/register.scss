@@ -1,0 +1,113 @@
+@import url(https://fonts.googleapis.com/css?family=Google+Sans);
+.container1-body{
+    width: 750px;
+    height: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 7px;
+    position: relative;
+    top: 173px;
+    border: 1px solid  rgba($color: #e2e0e050, $alpha: 1.0);
+}
+.app_name1 {
+    // content: url(./google-2015.svg);
+    width: 73px;
+    position: relative;
+    top: 47px;
+    right: -40px;
+}
+.text{
+    position: relative;
+    top: 64px;
+    right: 180.5px;
+    font-family: 'Google Sans',serif;
+}
+.pwd{
+    position: relative;
+    top: 60px;
+}
+.fname{
+    top: 22px;
+    right: 46px;
+    display: inline-block;
+}
+.lname{
+    top: 22px;
+    right: 234px;
+    display: inline-block;
+}
+.pass1{
+    top: 22px;
+    right: 46px;
+    display: inline-block;
+}
+.cnfm1{
+    top: 22px;
+    right: 234px;
+    display: inline-block;
+}
+.cnfmpass{
+    position: relative;
+    top: 40px;
+}
+#outlined-textarea1{
+    height: 100px;
+    width: 155px;
+}
+#outlined-textarea2{
+    display: block;
+    width: 360px;
+}
+#outlined-textarea3{
+    height: 19px;
+    width: 155px;
+}
+.user{
+    position: relative;
+    top: 34px;
+    right: 95px;
+}
+.gmail{
+    // display: block;
+    position: relative;
+    right: 95px;
+    top: 13px;
+}
+.line1{
+    position: relative;
+    top: 40px;
+    right: 200px;
+}
+.hint{
+    position: relative;
+    top: 19px;
+    right: 150px;
+    font-size: 12px;
+}
+#formGridCheckbox{
+    position: relative;
+    top: 80px;
+    right: 265px;
+}
+.but2{
+    width: 81px;
+    height: 37px;
+    // margin-left: 62%;
+    // margin-top: 25%;
+    position: relative;
+    top: 100px;
+    right: 70px;
+    // left: 76px;
+}
+.link2{
+    position: relative;
+    top: 100px;
+    right: 235px;
+}
+.accnt img{
+    content: url('./account.svg');
+    width: 250px;
+    position: relative;
+    left: 220px;
+    top: -325px;
+}
