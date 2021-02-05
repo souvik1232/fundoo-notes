@@ -1,5 +1,8 @@
-import  Post  from "./axiosservice";
+import  Axios  from "./axiosservice";
 
-export default registration=(data)=>{
-    Post('user/signUp',data)
+const axiosService=new Axios()
+export default class UserService {
+    registration(data){
+        axiosService.Post('user/userSignUp',data)
+    }
 }

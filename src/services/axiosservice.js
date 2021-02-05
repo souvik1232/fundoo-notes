@@ -1,5 +1,9 @@
 import  axios  from "axios";
-const baseurl;
-export default Post=(url,data)=>{
-    axios.post(baseurl+url,data)
+const baseurl="http://fundoonotes.incubation.bridgelabz.com/api/";
+
+export default class Axios{
+    Post(url,data){
+        return axios.post(baseurl+url,data)
+    }
 }
+   

@@ -23,7 +23,7 @@ class Login extends Component {
                     
                 
                 <div className="container-body1">
-                    <div class="box1"><Typography className="app_name" variant="h5" color="textSecondary">
+                    <div className="box1"><Typography className="app_name" variant="h5" color="textSecondary">
           <span style={{ color: "#0606f8" }}>F</span>
           <span style={{ color: "#d10303" }}>u</span>
           <span style={{ color: "#f0b000" }}>n</span>
