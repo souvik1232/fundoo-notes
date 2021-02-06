@@ -25,11 +25,13 @@ class Register extends Component {
     }
 
     handleChange = (e) => {
+        e.preventDefault();
         console.log("on change calling",e.target.value);
         this.setState({ [e.target.name]: e.target.value })
     }
 
-    handleRegister = () => {
+    handleRegister = (e) => {
+        e.preventDefault();
         let data = {
             firstName: this.state.firstName,
             lastName: this.state.lastName,
