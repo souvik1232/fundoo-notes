@@ -3,23 +3,23 @@ import Form from "react-bootstrap/Form";
 import Button from 'react-bootstrap/Button';
 import TextField from '@material-ui/core/TextField';
 import Typography from "@material-ui/core/Typography";
-import './forgotpassword.scss'
+import './reset.scss'
 import UserService from "../../services/userservice";
 const userService = new UserService()
 
-class Forgot extends Component {
+class Reset extends Component {
 
 
     constructor(props) {
         super(props)
-
         this.state = {
-            email: '',
+            newPassword: '',
         }
     }
 
     handleChange = (e) => {
         // e.preventDefault();
+        // console.log(this.props.match.params.token);
         console.log("on change calling", e.target.value);
         this.setState({ [e.target.name]: e.target.value })
     }
@@ -27,11 +27,10 @@ class Forgot extends Component {
     handleRegister = (e) => {
         e.preventDefault();
         let data = {
-            email: this.state.email,
-            service: "advance"
+            newPassword: this.state.new_password,
         }
 
-        userService.forgotPassword(data).then((response) => {
+        userService.reset(data,this.props.match.params.token).then((response) => {
             console.log("response successfull", response);
         }).catch((error) => {
             console.log("error", error);
@@ -54,15 +53,15 @@ class Forgot extends Component {
                         <span style={{ color: "#d10303" }}>o</span>
                     </Typography></div>
                     <div className="sign"><h4>Find Your password</h4></div>
-                    <div className="abc"><h6>Enter your recovery email</h6></div>
+                    <div className="abc"><h6>Enter your new Password</h6></div>
                     <div className="form"><Form>
                         <Form.Group controlId="formBasicEmail">
                             {/* <Form.Label>Email address</Form.Label> */}
                             <TextField
-                                value={this.state.email}
-                                name="email"
+                                value={this.state.new_password}
+                                name="new_password"
                                 id="outlined-textarea"
-                                label="Email"
+                                label="Password"
                                 placeholder=""
                                 multiline
                                 variant="outlined"
@@ -88,4 +87,4 @@ class Forgot extends Component {
     }
 }
 
-export default Forgot
+export default Reset

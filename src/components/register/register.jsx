@@ -6,6 +6,7 @@ import Button from 'react-bootstrap/Button';
 import TextField from '@material-ui/core/TextField';
 import InputGroup from 'react-bootstrap/InputGroup';
 import FormControl from 'react-bootstrap/FormControl';
+import Snackbar from "@material-ui/core/Snackbar";
 import './register.scss';
 import Typography from "@material-ui/core/Typography";
 import UserService from "../../services/userservice";
@@ -14,19 +15,23 @@ class Register extends Component {
 
     constructor(props) {
         super(props)
-
         this.state = {
             firstName: '',
             lastName: '',
             email: '',
             password: '',
-            email: ''
-        }
+            email: '',
+            snackbaropen: false,
+            snackbarmsg: ''
+        };
+    }
+    snackbarClose =(event) =>{
+        this.setState({snackbaropen:false});
     }
 
     handleChange = (e) => {
-        e.preventDefault();
-        console.log("on change calling",e.target.value);
+        // e.preventDefault();
+        console.log("on change calling", e.target.value);
         this.setState({ [e.target.name]: e.target.value })
     }
 
@@ -40,18 +45,32 @@ class Register extends Component {
             service: "advance"
         }
 
-        userService.registration(data).then((response)=>{
-            console.log("response successfull",response);
-        }).catch((error)=>{
-            console.log("error",error);
+        userService.registration(data).then((response) => {
+            console.log("response successfull", response);
+            this.setState({snackbaropen:true,snackbarmsg:'registered'})
+        }).catch((error) => {
+            console.log("error", error);
+            this.setState({snackbaropen:true,snackbarmsg:error})
         })
+    }
+    login = () => {
+        window.location.href = "http://localhost:4200/login"
+    }
+    myFunction = () => {
+        let x = document.getElementById("outlined-textarea3");
+        if (x.type === "password") {
+            x.type = "text";
+        } else {
+            x.type = "password";
+        }
     }
 
     render() {
         return (
             <div>
-
+                
                 <div className="container1-body">
+                    
 
                     <div className="box2"><Typography className="app_name1" variant="h5" color="textSecondary">
                         <span style={{ color: "#0606f8" }}>F</span>
@@ -110,7 +129,9 @@ class Register extends Component {
                             // size="medium"
                             margin="dense"
                             onChange={this.handleChange}
-                        /><span class="gmail">@gmail.com</span></div>
+                        />
+                            <span class="gmail">@gmail.com</span>
+                        </div>
                         <div className="line1"><Button variant="link">Use my current email address instead</Button></div>
                         <div className="cnfmpass">
                             <Row>
@@ -150,12 +171,20 @@ class Register extends Component {
                             <div className="hint">Use 8 or more characters with a mix of letters, numbers & symbols </div>
                         </div>
                         <Form.Group id="formGridCheckbox">
-                            <Form.Check type="checkbox" label="Show password" />
+                            <Form.Check onClick={this.myFunction} type="checkbox" label="Show password" />
                         </Form.Group>
-                        <Button className="link2" variant="link">Sign in instead</Button>
+                        <Button onClick={this.login} className="link2" variant="link">Sign in instead</Button>
                         <Button onClick={this.handleRegister} className="but2" variant="primary" type="submit">
                             Next
   </Button>
+  <Snackbar
+                    anchorOrigin={{vertical:'bottom',horizontal:'center'}}
+                    open = {this.state.snackbaropen}
+                    autoHideDuration = {3000}
+                    onClose={this.snackbarClose}
+                    message = {<span id ="message-id">registered successfully</span>}
+                    // action
+                    />
                         <div className="accnt"><img /></div>
                         {/* <div>One account. All of Google working for you.</div> */}
                     </Form>
