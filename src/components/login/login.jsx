@@ -42,6 +42,7 @@ class Login extends Component {
 
             userService.login(data).then((response) => {
                 console.log("response successfull", response);
+                localStorage.setItem('token',response.data.id);
                 this.setState({ snackbaropen: true, snackbarmsg: 'Logged In' })
             }).catch((error) => {
                 console.log("error", error);
