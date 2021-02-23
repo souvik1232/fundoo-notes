@@ -26,8 +26,11 @@ class getNote extends Component {
     render(){
         return (
             <div>
-                <CreateNote/>
-                <DisplayNote NotesArray={this.state.notes} />
+                <CreateNote 
+                getnoteupdate={this.note} />
+                <DisplayNote
+                getnoteupdate={this.note}
+                NotesArray={this.state.notes} />
                 
             </div>
         )

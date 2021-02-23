@@ -13,7 +13,7 @@ import SearchIcon from "@material-ui/icons/Search"
 import Typography from "@material-ui/core/Typography";
 import SettingsIcon from '@material-ui/icons/Settings';
 import ViewAgendaOutlinedIcon from '@material-ui/icons/ViewAgendaOutlined';
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 
 class dashboard extends Component {
 
@@ -99,7 +99,7 @@ class dashboard extends Component {
                                 <AiIcons.AiOutlineClose />
                             </Link> */}
                             <li className="navbar-toggle">
-                                <div className='notes' onClick={this.notes}>
+                                <div className='notes' onClick={()=>{<Redirect to="dashboard/notes"/>}}>
                                     <img className='ig' id='i1' /><span className='a'>Notes</span></div>
 
                             </li>

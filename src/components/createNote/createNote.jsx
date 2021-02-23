@@ -14,7 +14,7 @@ var checkOpen = "open";
 
 const noteService = new NoteService()
 
-export default function AddNote() {
+export default function AddNote(props) {
   const [open, setOpen] = React.useState(false);
   const [title, settitle] = React.useState('');
   const [description, setdescription] = React.useState('');
@@ -42,12 +42,17 @@ export default function AddNote() {
       description : description,
     }
     console.log(data)
+    if (data[title]===null|| data[description]===null) {
+      alert("Fill the note");
+    }else{
     noteService.addNote(data).then((data)=>{
+      props.getnoteupdate()
       console.log(data);
     })
     .catch ((error)=>{
       console.log(error)
     })
+  }
     if (checkOpen == "close") {
       setOpen(true);
       checkOpen = "open";
@@ -55,7 +60,8 @@ export default function AddNote() {
       setOpen(false);
       checkOpen = "close";
     }
-    window.location.href='http://localhost:4200/dashboard/notes'
+    
+    // window.location.reload();
   }
 
   return (

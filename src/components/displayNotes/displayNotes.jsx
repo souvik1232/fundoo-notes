@@ -6,6 +6,7 @@ import Typography from '@material-ui/core/Typography';
 import IconButton from "@material-ui/core/IconButton";
 import InputBase from "@material-ui/core/InputBase";
 import Button from '@material-ui/core/Button';
+import Dialog from '@material-ui/core/Dialog';
 import DisplayIcons from "../displayicons/displayicons"
 import logoicon from "../icons/pin.jpeg";
 import './displayNotes.scss'
@@ -26,6 +27,8 @@ class DisplayNotes extends Component {
             title: '',
             description: '',
             modalIsOpen: false,
+            open: '',
+            clr:'#fafafa'
         }
     }
 
@@ -46,6 +49,7 @@ class DisplayNotes extends Component {
 
         noteService.updateNote(data).then((data) => {
             console.log(data);
+            this.props.getnoteupdate()
         }).catch((err) => {
             console.log(err);
         })
@@ -62,67 +66,93 @@ class DisplayNotes extends Component {
 
 
     }
-
+    handleClickOpen = (e, data) => {
+        e.stopPropagation();
+        this.setState({
+            open: true,
+            noteId: data.id,
+            title: data.title,
+            description: data.description
+        })
+    };
+    handleClose = () => {
+        this.setState({ open: false })
+    };
+    setColor =(color)=>{
+        console.log(color);
+        this.setState=({
+            clr:color
+        })
+    }
 
 
 
     render() {
 
         return (
-            <div className='container-card'>
-                {
-                    this.props.NotesArray.filter((data) => data.isDeleted === false).filter((data) => data.isArchived === false).map((data) => (
-                        <Card key={data.id} className='card' variant='outlined' >
-                            <CardContent onClick={(e) => this.modalOpen(e, data)}>
+            <div>
+                <div className='container-card'>
+                    {
+                        this.props.NotesArray.filter((data) => data.isDeleted === false).filter((data) => data.isArchived === false).map((data) => (
+                            <Card key={data.id} className='card' variant='outlined' style={{background: data.color}}>
+                                <CardContent onClick={(e) => this.handleClickOpen(e, data)}>
 
-                                <Typography variant="h5" key={data.index} component="h2" >
-                                    {data.title}
-                                </Typography>
-                                <Typography variant="body2" key={data.index} component="p" >
-                                    {data.description}
-                                </Typography>
+                                    <Typography variant="h5" key={data.index} component="h2" >
+                                        {data.title}
+                                    </Typography>
+                                    <Typography variant="body2" key={data.index} component="p" >
+                                        {data.description}
+                                    </Typography>
 
-                                {/* <GetNote /> */}
-
-
-                            </CardContent>
-                            <CardActions>
-                                <div className='icons'>
-                                    <DisplayIcons
-                                        noteobject={data}
-                                         />
-                                </div>
-
-                            </CardActions>
-
-                        </Card>
+                                    {/* <GetNote /> */}
 
 
-                    ))
-                }
+                                </CardContent>
+                                <CardActions>
+                                    <div className='icons'>
+                                        <DisplayIcons
+                                            noteobject={data}
+                                            setcolor={this.setColor}
+                                            edit={false}
+                                        />
+                                    </div>
 
-                <Modal isOpen={this.state.modalIsOpen} >
-                    <div className="note3" >
-                        <div className="title pd">
-                            <InputBase placeholder='title' fullWidth name='title' onChange={this.handleNoteChange} />
-                            <IconButton>
-                                <img className="logoIcon" src={logoicon} size="small" />
-                            </IconButton>
+                                </CardActions>
+
+                            </Card>
+
+
+                        ))
+                    }
+                    <Dialog onClose={this.handleClose} aria-labelledby="customized-dialog-title" open={this.state.open} >
+                        <div className='modalnote'>
+                            <div className="title pd">
+                                <InputBase placeholder='title' value={this.state.title} fullWidth name='title' onChange={this.handleNoteChange} />
+                                <IconButton>
+                                    <img className="logoIcon" src={logoicon} size="small" />
+                                </IconButton>
+                            </div>
+                            <div className='note pd'>
+                                <InputBase placeholder='desc' value={this.state.description} fullWidth name='description' onChange={this.handleNoteChange} />
+                            </div>
+                            <div >
+
+                            </div>
+                            <div><DisplayIcons
+                            id={this.state.noteId}
+                            edit={true}
+                            setClr={this.state.clr}/></div>
+
+                            <div className="close">
+                                <Button size="small" onClick={this.handleUpdateNote}>Close</Button>
+                            </div>
                         </div>
-                        <div className='note pd'>
-                            <InputBase placeholder='desc' fullWidth name='description' onChange={this.handleNoteChange} />
-                        </div>
-                        <div >
-
-                        </div>
-                        <div><DisplayIcons /></div>
-
-                        <div className="close">
-                            <Button size="small" onClick={this.handleUpdateNote}>Close</Button>
-                        </div>
-                    </div>
-                </Modal>
+                    </Dialog>
+                </div>
             </div>
+
+
+
         )
     }
 
