@@ -1,12 +1,12 @@
 .notesone {
     display: flex;
     // flex-direction: column;
-    // align-items: center;
+    align-items: center;
     position: relative;
     // justify-content: center;
     width: 50%;
     // top: -140px;
-    left: 455px;
+    left: 445px;
 }
 
 .note {
@@ -71,4 +71,14 @@
 .toolbar1 {
     display: flex;
     padding-left: 10px;
+}
+@media (max-width:912px){
+    .notesone{
+        // display: none;
+        position: relative;
+        // width: 400px;
+        top: 0px;
+        left: 190px;
+        // border: 1px solid black;
+    }
 }

@@ -5,6 +5,9 @@ import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import CardActions from '@material-ui/core/CardActions';
 import DisplayIcons from "../displayicons/displayicons"
+import IconButton from '@material-ui/core/IconButton';
+import DeleteForeverOutlinedIcon from '@material-ui/icons/DeleteForeverOutlined';
+import RestoreFromTrashOutlinedIcon from '@material-ui/icons/RestoreFromTrashOutlined';
 import CreateNote from '../createNote/createNote'
 import DisplayNote from '../displayNotes/displayNotes'
 import './gettrash.scss'
@@ -27,7 +30,26 @@ class getNote extends Component {
         noteService.gettrashNote().then((res) => {
             console.log(res.data.data.data);
             this.setState({ trash: res.data.data.data })
+            this.setState({ trash: this.state.trash.reverse() })
         })
+    }
+    deleteforever = (e, id) => {
+        let data = {
+            // cardidList:this.cardId,
+            noteIdList: [id],
+            isDeleted: false,
+        }
+
+        console.log(data);
+        noteService.foreverDelete(data)
+            .then((data) => {
+                console.log(data);
+                this.note()
+                // props.getall();
+            })
+            .catch((err) => {
+                console.log("error = " + err);
+            });
     }
     render() {
         return (
@@ -50,9 +72,12 @@ class getNote extends Component {
                             </CardContent>
                             <CardActions>
                                 <div className='icons'>
-                                    <DisplayIcons
-                                        noteobject={data}
-                                    />
+                                    <IconButton aria-label="Remind me" edge="start">
+                                        <DeleteForeverOutlinedIcon fontSize="small" onClick={(e)=>{this.deleteforever(e,data.id)}}/>
+                                    </IconButton>
+                                    <IconButton aria-label="Remind me" edge="start">
+                                        <RestoreFromTrashOutlinedIcon fontSize="small" />
+                                    </IconButton>
                                 </div>
 
                             </CardActions>

@@ -20,13 +20,14 @@ const useStyles = makeStyles((theme) => ({
   colorMenu: {
     width: "150px",
     height: "120px",
+    padding: "1px",
     display: "flex",
     flexFlow: " column wrap",
   },
   colorButton: {
     margin: "2px",
-    width: "5px",
-    height: "5px",
+    width: "30px",
+    height: "30px",
     "&:hover": {
       border: "black 1px solid",
     },
@@ -83,6 +84,7 @@ const DisplayIcons = (props) => {
         });
     }
     // props.setcolor=colr;
+    props.setcolor(colr)
   };
   const deleteHandleOpen = (event) => {
     setAnchorE2(event.currentTarget);
@@ -101,6 +103,7 @@ const DisplayIcons = (props) => {
       .then((data) => {
         console.log(data);
         // props.getupdate()
+        props.getUpdate()
       })
       .catch((err) => {
         console.log("error = " + err);
@@ -117,7 +120,8 @@ const DisplayIcons = (props) => {
     noteService.deleteNote(data)
       .then((data) => {
         console.log(data);
-        props.getall();
+        // props.getall();
+        props.getUpdate()
       })
       .catch((err) => {
         console.log("error = " + err);
@@ -138,17 +142,17 @@ const DisplayIcons = (props) => {
   const DATA = [
     { id: "#e6c9a8" },
     { id: "#FFFFFF" },
-    { id: "#CFAFAF" },
+    // { id: "#CFAFAF" },
     { id: "#D0C0C0" },
     { id: "#DBA9A9" },
-    { id: "#DF9D9D" },
+    // { id: "#DF9D9D" },
     { id: "#fbbc04" },
     { id: "#00FF00" },
     // { id: "#008000" },
     { id: "#00FFFF" },
     // { id: "#008080" },
     // { id: "#000080" },
-    { id: "#CD5C5C" },
+    // { id: "#CD5C5C" },
     { id: "#ccff90" },
     { id: "#e8eaed" },
     { id: "#d7aefb" },

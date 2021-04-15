@@ -21,6 +21,7 @@ class getNote extends Component {
         noteService.getNote().then((res)=>{
             console.log(res.data.data.data);
             this.setState({notes:res.data.data.data})
+            this.setState({notes:this.state.notes.reverse()})
         })
     }
     render(){
@@ -31,7 +32,6 @@ class getNote extends Component {
                 <DisplayNote
                 getnoteupdate={this.note}
                 NotesArray={this.state.notes} />
-                
             </div>
         )
     }

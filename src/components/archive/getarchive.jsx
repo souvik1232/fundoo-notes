@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import NoteService from "../../services/notesservice";
 import Card from '@material-ui/core/Card';
+import IconButton from '@material-ui/core/IconButton';
+import UnarchiveOutlinedIcon from '@material-ui/icons/UnarchiveOutlined';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import CardActions from '@material-ui/core/CardActions';
@@ -27,9 +29,27 @@ class getNote extends Component {
         noteService.getarchiveNote().then((res) => {
             console.log(res.data.data.data);
             this.setState({ archive: res.data.data.data })
+            this.setState({ archive: this.state.archive.reverse() })
         })
     }
+    unarchive=(e,id)=>{
+        let data = {
+            noteIdList: [id],
+            isArchived: false,
+          };
+          console.log(data)
+          noteService.archiveNote(data)
+            .then((data) => {
+              console.log(data);
+              // props.getupdate()
+              this.note()
+            })
+            .catch((err) => {
+              console.log("error = " + err);
+            });
+    }
     render() {
+
         return (
             <div className="mainContent">
                 {
@@ -50,9 +70,9 @@ class getNote extends Component {
                             </CardContent>
                             <CardActions>
                                 <div className='icons'>
-                                    <DisplayIcons
-                                        noteobject={data}
-                                    />
+                                    <IconButton aria-label="Remind me" edge="start">
+                                        <UnarchiveOutlinedIcon fontSize="small" onClick={(e)=>{this.unarchive(e,data.id)}} />
+                                    </IconButton>
                                 </div>
 
                             </CardActions>

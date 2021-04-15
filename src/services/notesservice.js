@@ -29,4 +29,7 @@ export default class NoteService {
     postColor = (data) => {
         return axiosService.Post('notes/changesColorNotes',data,localStorage.getItem('token'))
     }
+    foreverDelete = (data)=>{
+        return axiosService.Post('notes/deleteForeverNotes',data,localStorage.getItem('token'))
+    }
 }

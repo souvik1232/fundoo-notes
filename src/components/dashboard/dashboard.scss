@@ -38,25 +38,32 @@
 
 .nav-menu{
     background-color: rgb(255, 255, 255);
-    width: 250px;
+    width: 50px;
     height: 100vh;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     position: fixed;
     top: 63px;
-    left: -100%;
-    transition: 850ms;
-    box-shadow: black;
-    // border:1px solid rgb(231, 231, 231) ;
-    box-shadow: 3px 3px 8px rgb(207, 207, 207)
+    overflow: hidden;
+    left: 0.1%;
+    transition: 550ms;
+    box-shadow: none;
+}
+.nav-menu:hover{
+    width: 250px;
+    box-shadow: 3px 3px 8px rgb(207, 207, 207);
+    z-index: 999;
+    
 }
 
 .nav-menu.active{
-    left: 0;
+    width: 250px;
+    
     transition: 350ms;
     display: flex;
     position: fixed;
-    z-index: 1;
+    z-index: 999;
+    box-shadow: 3px 3px 8px rgb(207, 207, 207)
 }
 .navbar-toggle{
     list-style: none;
@@ -64,24 +71,27 @@
 }
 .notes,.reminder,.assinment,.edit,.archive,.trash{
     display: flex;
-    justify-content: start;
+    justify-content: flex-start;
     align-items: center;
-    // padding: 16px 8px 8px 8px;
     list-style: none;
     height: 50px;
-    font-size: 17px;
-    // padding: 0 16px;
-    // border-radius: 10px;
-    
+    font-size: 17px; 
+    cursor: pointer;
+}
+.a{
+    position: relative;
+    left: 35px;
 }
 .notes:hover,.reminder:hover,.assinment:hover,.edit:hover,.archive:hover,.trash:hover {
-    background-color: #feefc3;
-    border-radius: 17px;
+    background-color: #f1f3f4;
+    border-top-right-radius: 23px;
+    border-bottom-right-radius: 23px;
     
 }
-.ig:hover{
-    background-color: #feefc3;
-    border-radius: 17px;
+.notes.active, .archive.active, .trash.active{
+    background-color:#feefc3; 
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;
 }
 .help{
     content: url('../icons/refresh_48px.svg');
@@ -95,15 +105,25 @@
 }
 .icon{
     display: flex;
+    justify-content: space-around;
     padding: 10px;
+    opacity: 0.6;
+    width: 250px;
+}
+.ic{
+    display: flex;
+    justify-content: space-evenly;
+    width: 100px;
+}
+.profile{
+    padding: 13px;
+    background-color: grey;
+    border-radius: 45px;
 }
 .list{
     margin:10px;
     padding:10px 8px 10px;
     border-radius: 19px;
-}
-.list:hover{
-    background-color: rgba($color: #dfdfdf, $alpha: 1.0);
 }
 .search {
     height: 5vh;
@@ -114,6 +134,7 @@
     border-radius: 6px;
     position: relative;
     right: 190px;
+    // border: 1px solid black;
 }
 .help:hover{
     background-color: rgba($color: #dfdfdf, $alpha: 1.0);
@@ -155,7 +176,7 @@ right: 105px;
 }
 #i2{
     content: url('../icons/iconfinder_alert-70px_510873.png');
-    width: 50px;
+    width: 55px;
 }
 #i3{
     content: url('../icons/edit_black_48x48.png');
@@ -180,6 +201,37 @@ right: 105px;
 .ig{
     display: flex;
     position: relative;
-    right: 30px;
+    // right: 30px;
     padding: 16px 16px 8px 8px;
+}
+@media (max-width:916px){
+    .nav{
+        width: 700px;
+    }
+    .search{
+        position: relative;
+        left: 50px;
+        top: -30px;
+    }
+    .img{
+        position: relative;
+        top: -30px;
+    }
+}
+@media(max-width:1218px ) and (min-width:925px){
+    .search{
+        position: relative;
+        left: -45px;
+        top: -25px;
+        
+    }
+    .img{
+        position: relative;
+        top: -25px;
+    }
+}
+@media (max-width:1404px){
+    .app_nam{
+        display: none;
+    }
 }

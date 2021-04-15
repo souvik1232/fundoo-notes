@@ -114,6 +114,7 @@ class DisplayNotes extends Component {
                                             noteobject={data}
                                             setcolor={this.setColor}
                                             edit={false}
+                                            getUpdate={this.props.getnoteupdate}
                                         />
                                     </div>
 
