@@ -16,6 +16,16 @@
     top: 47px;
     right: -40px;
 }
+.accnt{
+    width: 280px;
+    position: relative;
+    top: -335px;
+    left: 450px;
+
+}
+.accnt img{
+    content: url('./account.svg');
+}
 .text{
     position: relative;
     top: 64px;
@@ -103,11 +113,4 @@
     position: relative;
     top: 100px;
     right: 235px;
-}
-.accnt img{
-    content: url('./account.svg');
-    width: 250px;
-    position: relative;
-    left: 220px;
-    top: -325px;
 }

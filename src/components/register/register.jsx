@@ -4,8 +4,6 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from 'react-bootstrap/Button';
 import TextField from '@material-ui/core/TextField';
-import InputGroup from 'react-bootstrap/InputGroup';
-import FormControl from 'react-bootstrap/FormControl';
 import Snackbar from "@material-ui/core/Snackbar";
 import './register.scss';
 import Typography from "@material-ui/core/Typography";
@@ -20,7 +18,6 @@ class Register extends Component {
             lastName: '',
             email: '',
             password: '',
-            email: '',
             snackbaropen: false,
             snackbarmsg: ''
         };
@@ -142,7 +139,6 @@ class Register extends Component {
                                         id="outlined-textarea3"
                                         label="Password"
                                         placeholder=""
-                                        name="password"
                                         variant="outlined"
                                         type="password"
                                         autoComplete="current-password"
@@ -185,7 +181,7 @@ class Register extends Component {
                     message = {<span id ="message-id">registered successfully</span>}
                     // action
                     />
-                        <div className="accnt"><img /></div>
+                        <div className="accnt"><img alt='img'/></div>
                         {/* <div>One account. All of Google working for you.</div> */}
                     </Form>
                 </div>

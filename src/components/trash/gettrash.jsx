@@ -4,12 +4,9 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import CardActions from '@material-ui/core/CardActions';
-import DisplayIcons from "../displayicons/displayicons"
 import IconButton from '@material-ui/core/IconButton';
 import DeleteForeverOutlinedIcon from '@material-ui/icons/DeleteForeverOutlined';
 import RestoreFromTrashOutlinedIcon from '@material-ui/icons/RestoreFromTrashOutlined';
-import CreateNote from '../createNote/createNote'
-import DisplayNote from '../displayNotes/displayNotes'
 import './gettrash.scss'
 const noteService = new NoteService()
 

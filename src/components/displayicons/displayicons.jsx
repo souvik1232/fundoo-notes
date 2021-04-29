@@ -10,10 +10,8 @@ import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 import Paper from "@material-ui/core/Paper";
 import { makeStyles } from "@material-ui/core/styles";
-import { Card } from "@material-ui/core";
 import '../displayicons/displayicons.scss'
 import NoteService from "../../services/notesservice";
-import { PowerInputSharp } from "@material-ui/icons";
 const noteService = new NoteService()
 
 const useStyles = makeStyles((theme) => ({
@@ -44,7 +42,6 @@ const DisplayIcons = (props) => {
   const [noteId, setNoteId] = React.useState(props.editId);
   const [title, setTitle] = React.useState(props.editTitle);
   const [description, setDescription] = React.useState(props.editDisc);
-  // let Bgcolor = props.color
   const colorsHandleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -63,7 +60,6 @@ const DisplayIcons = (props) => {
         .then((data) => {
           console.log("Update Color: " + data);
           console.log(colr);
-          // props.getall();
         })
         .catch((err) => {
           console.log("Update Color Error = " + err);
@@ -77,13 +73,11 @@ const DisplayIcons = (props) => {
         .then((data) => {
           console.log("Update Color: " + data);
           console.log(colr);
-          // props.getall();
         })
         .catch((err) => {
           console.log("Update Color Error = " + err);
         });
     }
-    // props.setcolor=colr;
     props.setcolor(colr)
   };
   const deleteHandleOpen = (event) => {
@@ -102,7 +96,6 @@ const DisplayIcons = (props) => {
     noteService.archiveNote(data)
       .then((data) => {
         console.log(data);
-        // props.getupdate()
         props.getUpdate()
       })
       .catch((err) => {
@@ -111,7 +104,6 @@ const DisplayIcons = (props) => {
   };
   const deleted = () => {
     let data = {
-      // cardidList:this.cardId,
       noteIdList: [props.noteobject.id],
       isDeleted: true,
     }
@@ -120,19 +112,13 @@ const DisplayIcons = (props) => {
     noteService.deleteNote(data)
       .then((data) => {
         console.log(data);
-        // props.getall();
         props.getUpdate()
       })
       .catch((err) => {
         console.log("error = " + err);
       });
     setAnchorE2(null);
-    // props.setDelete();
   };
-
-  //   const selectColor =()=>{
-  //       PowerInputSharp.setBg
-  //   }
   const handlecolor = () => {
     setColor(true)
   }
@@ -142,26 +128,17 @@ const DisplayIcons = (props) => {
   const DATA = [
     { id: "#e6c9a8" },
     { id: "#FFFFFF" },
-    // { id: "#CFAFAF" },
     { id: "#D0C0C0" },
     { id: "#DBA9A9" },
-    // { id: "#DF9D9D" },
     { id: "#fbbc04" },
     { id: "#00FF00" },
-    // { id: "#008000" },
     { id: "#00FFFF" },
-    // { id: "#008080" },
-    // { id: "#000080" },
-    // { id: "#CD5C5C" },
     { id: "#ccff90" },
     { id: "#e8eaed" },
     { id: "#d7aefb" },
     { id: "#a7ffeb" },
     { id: "#fff475" },
   ];
-  //   const selectColor = (value) => {
-  //     setBgColor(value);
-  //   };
   const ColorBlock = () => {
     return (
       <div className={classes.colorMenu} onMouseLeave={colorsHandleClose}>

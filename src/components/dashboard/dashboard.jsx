@@ -37,7 +37,7 @@ class dashboard extends Component {
     trash = () => {
         history.push('/dashboard/trash')
         this.setState({
-            trash: (!this.state.trash),
+            trash: true,
             notes: false,
             archive: false
         })
@@ -45,7 +45,7 @@ class dashboard extends Component {
     notes = () => {
         history.push('/dashboard/notes')
         this.setState({
-            notes: (!this.state.notes),
+            notes: true,
             archive: false,
             trash: false
         })
@@ -53,7 +53,7 @@ class dashboard extends Component {
     archive = () => {
         history.push('/dashboard/archive')
         this.setState({
-            archive: (!this.state.archive),
+            archive: true,
             notes: false,
             trash: false,
         })

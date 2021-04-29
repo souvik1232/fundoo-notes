@@ -14,12 +14,11 @@
 
 .card{
     width: 269px;
-    // height: 186px;
     display:flex;
     flex-wrap: nowrap;
-    border-radius: 8px;
+    border-radius: 10px;
     text-align: left;
-    margin:4px;
+    margin:7px;
 }
 .card:hover {
     box-shadow:  3px 3px 10px 3px rgb(211, 211, 211);
@@ -37,17 +36,7 @@
     opacity: 1;
     transition: 800ms;
 }
-// .modal-box{
-//     height: 200px;
-//     width: 600px;
-//     padding: 15px;
-//     position: fixed;
-//     top: 30%;
-//     right: 40%;
-//     border: 1px solid rgba($color: #d6d6d6, $alpha: 1.0);
-//     border-radius: 8px;
-//     outline: none;
-// }
+
 .modalnote{
     height: 200px;
     width: 600px;

@@ -9,6 +9,7 @@ import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import DisplayIcons from "../displayicons/displayicons"
 import logoicon from "../icons/pin.jpeg";
+import { StylesProvider } from '@material-ui/core/styles';
 import './displayNotes.scss'
 import NoteService from "../../services/notesservice";
 import Modal from 'react-modal'
@@ -28,7 +29,7 @@ class DisplayNotes extends Component {
             description: '',
             modalIsOpen: false,
             open: '',
-            clr:'#fafafa'
+            clr: '#fafafa'
         }
     }
 
@@ -78,10 +79,10 @@ class DisplayNotes extends Component {
     handleClose = () => {
         this.setState({ open: false })
     };
-    setColor =(color)=>{
+    setColor = (color) => {
         console.log(color);
-        this.setState=({
-            clr:color
+        this.setState = ({
+            clr: color
         })
     }
 
@@ -94,33 +95,35 @@ class DisplayNotes extends Component {
                 <div className='container-card'>
                     {
                         this.props.NotesArray.filter((data) => data.isDeleted === false).filter((data) => data.isArchived === false).map((data) => (
-                            <Card key={data.id} className='card' variant='outlined' style={{background: data.color}}>
-                                <CardContent onClick={(e) => this.handleClickOpen(e, data)}>
+                            <StylesProvider injectFirst>
+                                <Card key={data.id} className='card' variant='outlined' style={{ background: data.color }}>
+                                    <CardContent onClick={(e) => this.handleClickOpen(e, data)}>
 
-                                    <Typography variant="h5" key={data.index} component="h2" >
-                                        {data.title}
-                                    </Typography>
-                                    <Typography variant="body2" key={data.index} component="p" >
-                                        {data.description}
-                                    </Typography>
+                                        <Typography variant="h5" key={data.index} component="h2" >
+                                            {data.title}
+                                        </Typography>
+                                        <Typography variant="body2" key={data.index} component="p" >
+                                            {data.description}
+                                        </Typography>
 
-                                    {/* <GetNote /> */}
+                                        {/* <GetNote /> */}
 
 
-                                </CardContent>
-                                <CardActions>
-                                    <div className='icons'>
-                                        <DisplayIcons
-                                            noteobject={data}
-                                            setcolor={this.setColor}
-                                            edit={false}
-                                            getUpdate={this.props.getnoteupdate}
-                                        />
-                                    </div>
+                                    </CardContent>
+                                    <CardActions>
+                                        <div className='icons'>
+                                            <DisplayIcons
+                                                noteobject={data}
+                                                setcolor={this.setColor}
+                                                edit={false}
+                                                getUpdate={this.props.getnoteupdate}
+                                            />
+                                        </div>
 
-                                </CardActions>
+                                    </CardActions>
 
-                            </Card>
+                                </Card>
+                            </StylesProvider>
 
 
                         ))
@@ -140,9 +143,9 @@ class DisplayNotes extends Component {
 
                             </div>
                             <div><DisplayIcons
-                            id={this.state.noteId}
-                            edit={true}
-                            setClr={this.state.clr}/></div>
+                                id={this.state.noteId}
+                                edit={true}
+                                setClr={this.state.clr} /></div>
 
                             <div className="close">
                                 <Button size="small" onClick={this.handleUpdateNote}>Close</Button>
